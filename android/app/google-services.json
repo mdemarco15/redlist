@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "650449033417",
+    "project_id": "codechallengeslogin",
+    "storage_bucket": "codechallengeslogin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:650449033417:android:53774859355d6507329518",
+        "android_client_info": {
+          "package_name": "com.codechallenge.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoHa_V31x9ro-9wjuR_kWvtmCqOPsmbr0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
