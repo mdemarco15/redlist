@@ -4,7 +4,7 @@ import 'package:code_challenge/features/auth/data/auth_repostory_impl.dart';
 import 'package:code_challenge/features/auth/data/data_sources/auth_remote_data_source.dart';
 import 'package:code_challenge/features/auth/data/data_sources/auth_remote_data_source_impl.dart';
 import 'package:code_challenge/features/auth/domain/auth_repository.dart';
-import 'package:code_challenge/features/auth/presentation/view_models/aauth_view_model.dart';
+import 'package:code_challenge/features/auth/presentation/view_models/auth_view_model.dart';
 import 'package:crow/crow.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
@@ -23,7 +23,13 @@ class AppBinding extends Binding {
     Get.put<SharedPreferences>(preferences);
     Get.lazyPut<AuthRemoteDataSource>(AuthRemoteDataSourceImpl.new);
     Get.lazyPut<AuthRepository>(() => AuthRepositoryImpl(Get.find<AuthRemoteDataSource>()));
-    Get.lazyPut(() => AuthViewModel(Get.find<SharedPreferences>(), Get.find<AuthRepository>()));
+    Get.lazyPut(
+      () => AuthViewModel(
+        Get.find<SharedPreferences>(),
+        Get.find<AuthRepository>(),
+        Get.find<FlutterSecureStorage>(),
+      ),
+    );
     FlutterSecureStorage storage = const FlutterSecureStorage();
     Get.put<FlutterSecureStorage>(storage);
   }
