@@ -1,9 +1,6 @@
 import 'dart:async';
-import 'dart:convert';
 
-import 'package:code_challenge/base/router/app_routes.dart';
 import 'package:code_challenge/features/auth/domain/auth_repository.dart';
-import 'package:code_challenge/features/home/data/models/show_response_model.dart';
 import 'package:code_challenge/features/home/domain/entity/show_response_entity.dart';
 import 'package:crow/crow.dart';
 import 'package:flutter/material.dart';
@@ -39,11 +36,6 @@ class AuthViewModel extends ViewModel with StateMixin<dynamic> {
   Future<void> initAuthentication() async {
     shows = await _authRepository.getShows();
     filteredShows = shows;
-  }
-
-  void navigateToDetail(ShowResponseEntity show) {
-    _sharedPreferences.setString('show', jsonEncode(ShowResponseModel.fromEntity(show).toJson()));
-    Get.toNamed(Routes.showDetail);
   }
 
   void resetFilter() {
