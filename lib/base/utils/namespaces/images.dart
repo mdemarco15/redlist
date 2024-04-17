@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 extension Images on Never {
-  //authentication
-  //static const String loginBackground = 'assets/images/loginBackground.png';
-  //static const String logoTitle = 'assets/images/logoTitle.png';
-  static const String splashLogo = 'assets/images/splashLogo.png';
+  static const String logo = 'assets/logo/rl50.png';
   static const String eye = 'assets/images/eye.svg';
   static const String closeEye = 'assets/images/closedEye.svg';
 
@@ -19,7 +16,7 @@ extension Images on Never {
   static const String savedIcon = 'assets/images/savedIcon.svg';
   static const String profileIcon = 'assets/images/profileIcon.svg';
 
-  Widget customSvgAsset({
+  static Widget customSvgAsset({
     String? svgImage,
     double? height,
     double? width,
@@ -27,6 +24,19 @@ extension Images on Never {
   }) {
     return SvgPicture.asset(
       svgImage!,
+      width: width,
+      height: height,
+      fit: fit!,
+    );
+  }
+  static Widget customAsset({
+    String? image,
+    double? height,
+    double? width,
+    BoxFit? fit,
+  }) {
+    return Image.asset(
+      image!,
       width: width,
       height: height,
       fit: fit!,
