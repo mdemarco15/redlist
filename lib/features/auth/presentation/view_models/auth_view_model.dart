@@ -64,4 +64,13 @@ class AuthViewModel extends ViewModel with StateMixin<dynamic> {
       Get.snackbar('Warning', 'Check your email, you should verify your registration');
     }
   }
+
+  Future<void> signUp(UserCreated statusSignup) async {
+    try {
+      await statusSignup.credential.user!.sendEmailVerification();
+      Get.snackbar('Warning', 'Email validation sent');
+    } catch (e) {
+      Get.snackbar('Warning', 'Error: $e');
+    }
+  }
 }
