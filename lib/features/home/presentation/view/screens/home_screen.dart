@@ -1,5 +1,6 @@
 import 'package:code_challenge/base/utils/namespaces/app_colors.dart';
 import 'package:code_challenge/base/utils/namespaces/app_styles.dart';
+import 'package:code_challenge/features/home/presentation/view/widgets/custom_drawer.dart';
 import 'package:code_challenge/features/home/presentation/view_models/home_view_model.dart';
 import 'package:crow/crow.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,11 @@ class HomeScreen extends Screen<HomeViewModel> {
       (model) {
         return ResponsiveBuilder(builder: (context, size) {
           return Scaffold(
+            drawer: CustomDrawer(
+              logout: () => viewModel.logout(),
+            ),
             appBar: AppBar(
+              iconTheme: const IconThemeData(color: Colors.white),
               backgroundColor: AppColors.primary,
               title: Text(
                 'Home',
