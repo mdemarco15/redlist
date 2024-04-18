@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 class CustomDrawer extends StatefulWidget {
   final Function logout;
   final Function(int route) switchPage;
+  final bool isDesktop;
   const CustomDrawer({
     super.key,
     required this.logout,
     required this.switchPage,
+    required this.isDesktop,
   });
 
   @override
@@ -19,46 +21,46 @@ class _CustomDrawerState extends State<CustomDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 25),
-            child: SizedBox(
-              height: context.width * 0.45,
-              width: context.height * 0.15,
-              child: Images.customAsset(
-                image: Images.logo,
-                width: context.width * 0.60,
-                height: context.height * 0.25,
-                fit: BoxFit.fitWidth,
-              ),
-            ),
-          ),
-          const SizedBox(height: 22),
-          Padding(
-            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.42),
-            child: drawerBuilder(
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            widget.isDesktop
+                ? const Padding(padding: EdgeInsets.only(left: 25))
+                : Padding(
+                    padding: const EdgeInsets.only(left: 25),
+                    child: SizedBox(
+                      height: context.width * 0.45,
+                      width: context.height * 0.15,
+                      child: Images.customAsset(
+                        image: Images.logo,
+                        width: context.width * 0.60,
+                        height: context.height * 0.25,
+                        fit: BoxFit.fitWidth,
+                      ),
+                    ),
+                  ),
+            drawerBuilder(
               'Home',
               Icons.home,
               null,
               () => widget.switchPage(0),
               Colors.red,
             ),
-          ),
-          const SizedBox(height: 22),
-          Padding(
-            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.42),
-            child: drawerBuilder(
-              'Logout',
-              Icons.logout,
-              null,
-              () => widget.logout(),
-              Colors.red,
+            const SizedBox(height: 22),
+            Padding(
+              padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.42),
+              child: drawerBuilder(
+                'Logout',
+                Icons.logout,
+                null,
+                () => widget.logout(),
+                Colors.red,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

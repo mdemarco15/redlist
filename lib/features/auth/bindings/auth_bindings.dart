@@ -14,7 +14,7 @@ class AuthBinding extends Binding {
     Get.lazyPut<AuthRemoteDataSource>(AuthRemoteDataSourceImpl.new);
 
     Get.lazyPut<AuthRepository>(
-      () => AuthRepositoryImpl(Get.find<AuthRemoteDataSource>()),
+      () => AuthRepositoryImpl(),
     );
 
     Get.lazyPut(

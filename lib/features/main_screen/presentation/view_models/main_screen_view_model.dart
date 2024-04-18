@@ -30,4 +30,13 @@ class MainScreenViewModel extends ViewModel with StateMixin {
     selectedBottomBarIndex.value = page;
     update();
   }
+
+  Future<void> logout() async {
+    try {
+      await _secureStorage.delete(key: 'token');
+      await Get.offAllNamed(Routes.login);
+    } catch (e) {
+      Get.snackbar('Warning', 'Error: $e');
+    }
+  }
 }
