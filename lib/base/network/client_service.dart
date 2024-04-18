@@ -1,7 +1,7 @@
+import 'package:code_challenge/base/api/endpoints.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:code_challenge/base/api/endpoints.dart';
 
 class ApiClient {
   Dio dio = Dio();
@@ -9,8 +9,8 @@ class ApiClient {
   ApiClient() {
     BaseOptions options = BaseOptions(
         baseUrl: Endpoints.baseUrl,
-        connectTimeout: 60 * 1000, // 60 seconds
-        receiveTimeout: 60 * 1000 // 60 seconds
+      connectTimeout: const Duration(seconds: 15),
+      receiveTimeout: const Duration(seconds: 15),
         );
 
     dio = Dio(options);

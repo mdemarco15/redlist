@@ -1,6 +1,9 @@
+import 'package:code_challenge/features/home/domain/entity/animal_by_id_response_entity.dart';
+import 'package:code_challenge/features/home/domain/entity/animal_species_response_entity.dart';
 import 'package:crow/crow.dart';
-import 'package:code_challenge/features/home/domain/entity/show_response_entity.dart';
 
 abstract class HomeRepository extends Repository {
-  Future<List<ShowResponseEntity>?> getShows();
+
+  Future<AnimalSpeciesResponseEntity?> getAnimalSpecies();
+  Future<AnimalByIdResponseEntity?> getAnimalByid(String id);
 }

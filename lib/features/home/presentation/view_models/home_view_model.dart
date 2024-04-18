@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:code_challenge/base/router/app_routes.dart';
-import 'package:code_challenge/features/home/domain/entity/show_response_entity.dart';
 import 'package:code_challenge/features/home/domain/home_repository.dart';
 import 'package:crow/crow.dart';
 import 'package:flutter/material.dart';
@@ -18,8 +17,6 @@ class HomeViewModel extends ViewModel with StateMixin<dynamic> {
   RxInt selectedBottomBarIndex = 0.obs;
   String userId = '';
   bool periodicEnabled = false;
-  List<ShowResponseEntity>? shows;
-  List<ShowResponseEntity>? filteredShows;
   TextEditingController filterController = TextEditingController();
   
   HomeViewModel(

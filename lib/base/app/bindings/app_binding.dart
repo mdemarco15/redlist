@@ -22,7 +22,7 @@ class AppBinding extends Binding {
     final SharedPreferences preferences = await SharedPreferences.getInstance();
     Get.put<SharedPreferences>(preferences);
     Get.lazyPut<AuthRemoteDataSource>(AuthRemoteDataSourceImpl.new);
-    Get.lazyPut<AuthRepository>(() => AuthRepositoryImpl(Get.find<AuthRemoteDataSource>()));
+    Get.lazyPut<AuthRepository>(() => AuthRepositoryImpl());
     Get.lazyPut(
       () => AuthViewModel(
         Get.find<SharedPreferences>(),
