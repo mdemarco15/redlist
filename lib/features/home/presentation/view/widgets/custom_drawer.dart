@@ -1,11 +1,10 @@
 import 'package:code_challenge/base/extensions/build_context_extension.dart';
-import 'package:code_challenge/base/router/app_routes.dart';
 import 'package:code_challenge/base/utils/namespaces/images.dart';
 import 'package:flutter/material.dart';
 
 class CustomDrawer extends StatefulWidget {
   final Function logout;
-  final Function(String route) switchPage;
+  final Function(int route) switchPage;
   const CustomDrawer({
     super.key,
     required this.logout,
@@ -44,7 +43,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               'Home',
               Icons.home,
               null,
-              () => widget.switchPage(Routes.home),
+              () => widget.switchPage(0),
               Colors.red,
             ),
           ),

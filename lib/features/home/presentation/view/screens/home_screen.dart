@@ -17,6 +17,7 @@ class HomeScreen extends Screen<HomeViewModel> {
         return ResponsiveBuilder(builder: (context, size) {
           return Scaffold(
             drawer: CustomDrawer(
+              switchPage: (page) => viewModel.switchPage(page),
               logout: () => viewModel.logout(),
             ),
             appBar: AppBar(
