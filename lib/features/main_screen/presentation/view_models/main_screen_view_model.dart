@@ -1,10 +1,10 @@
-import 'package:code_challenge/base/router/app_routes.dart';
 import 'package:code_challenge/features/auth/presentation/view/screens/auth_screen.dart';
 import 'package:code_challenge/features/home/presentation/view/screens/home_screen.dart';
 import 'package:crow/crow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class MainScreenViewModel extends ViewModel with StateMixin {
   final FlutterSecureStorage _secureStorage;
@@ -21,7 +21,7 @@ class MainScreenViewModel extends ViewModel with StateMixin {
     change(null, status: RxStatus.success());
     final tokenId = await _secureStorage.read(key: 'token');
     if (tokenId != null) {
-      Get.offAllNamed(Routes.home);
+      context.goNamed('home');
     }
     super.onInit();
   }
@@ -34,7 +34,7 @@ class MainScreenViewModel extends ViewModel with StateMixin {
   Future<void> logout() async {
     try {
       await _secureStorage.delete(key: 'token');
-      await Get.offAllNamed(Routes.login);
+      context.goNamed('login');
     } catch (e) {
       Get.snackbar('Warning', 'Error: $e');
     }
