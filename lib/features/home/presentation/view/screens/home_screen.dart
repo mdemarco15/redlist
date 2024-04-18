@@ -1,5 +1,6 @@
 import 'package:code_challenge/base/utils/namespaces/app_colors.dart';
 import 'package:code_challenge/base/utils/namespaces/app_styles.dart';
+import 'package:code_challenge/features/home/presentation/view/widgets/animal_item.dart';
 import 'package:code_challenge/features/home/presentation/view/widgets/custom_drawer.dart';
 import 'package:code_challenge/features/home/presentation/view_models/home_view_model.dart';
 import 'package:crow/crow.dart';
@@ -29,7 +30,18 @@ class HomeScreen extends Screen<HomeViewModel> {
               ),
             ),
             backgroundColor: AppColors.primary,
-            body: SingleChildScrollView(child: Text('asdas')),
+            body: Expanded(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: viewModel.animals.length,
+                itemBuilder: (context, index) {
+                  return AnimalItem(
+                    onTap: (id) => viewModel.showAnimalDetail(id),
+                    animal: viewModel.animals[index],
+                  );
+                },
+              ),
+            ),
           );
         });
       },

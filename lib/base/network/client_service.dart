@@ -1,4 +1,5 @@
 import 'package:code_challenge/base/api/endpoints.dart';
+import 'package:code_challenge/base/api/keys.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -8,10 +9,10 @@ class ApiClient {
   final FlutterSecureStorage storage = const FlutterSecureStorage();
   ApiClient() {
     BaseOptions options = BaseOptions(
-        baseUrl: Endpoints.baseUrl,
+      baseUrl: Endpoints.baseUrl,
       connectTimeout: const Duration(seconds: 15),
       receiveTimeout: const Duration(seconds: 15),
-        );
+    );
 
     dio = Dio(options);
     dio.interceptors.add(
@@ -22,7 +23,7 @@ class ApiClient {
         onResponse: (response, handler) {
           return handler.next(response);
         },
-        onError: (DioError e, handler) async {
+        onError: (DioException e, handler) async {
           return handler.next(e);
         },
       ),
@@ -31,8 +32,14 @@ class ApiClient {
 
   Future<Response<T>> get<T>({required String endpoint, Map<String, dynamic>? queryParameters}) async {
     try {
-      return await dio.get(endpoint, queryParameters: queryParameters, options: Options());
-    } on DioError catch (e) {
+      queryParameters ??= {};
+      queryParameters.addAll({'token': Keys.token});
+      return await dio.get(
+        endpoint,
+        queryParameters: queryParameters,
+        options: Options(),
+      );
+    } on DioException catch (e) {
       if (kDebugMode) {
         print('Error: $e');
       }
