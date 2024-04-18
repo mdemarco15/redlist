@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:code_challenge/base/router/app_routes.dart';
 import 'package:code_challenge/features/home/domain/entity/animal_by_id_entity.dart';
 import 'package:code_challenge/features/home/domain/entity/animal_entity.dart';
 import 'package:code_challenge/features/home/domain/home_repository.dart';
@@ -8,6 +7,7 @@ import 'package:crow/crow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeViewModel extends ViewModel with StateMixin<dynamic> {
@@ -46,7 +46,7 @@ class HomeViewModel extends ViewModel with StateMixin<dynamic> {
   Future<void> logout() async {
     try {
       await _secureStorage.delete(key: 'token');
-      await Get.offAllNamed(Routes.login);
+      context.goNamed('login');
     } catch (e) {
       Get.snackbar('Warning', 'Error: $e');
     }
@@ -73,10 +73,7 @@ class HomeViewModel extends ViewModel with StateMixin<dynamic> {
   void navigateToDetail(int? id) {
     _sharedPreferences.setInt('id', animalSearched!.taxonid!);
     _sharedPreferences.setString('name', animalSearched!.scientificName!);
-    Get.toNamed(Routes.animalDetail, arguments: {
-      'id': animalSearched?.taxonid,
-      'name': animalSearched?.scientificName,
-    });
+    context.goNamed('detail');
   }
 
   void openDrawer() {

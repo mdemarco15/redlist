@@ -2,7 +2,7 @@ import 'package:code_challenge/base/utils/namespaces/app_colors.dart';
 import 'package:code_challenge/base/utils/namespaces/app_styles.dart';
 import 'package:code_challenge/base/utils/namespaces/images.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
@@ -39,7 +39,7 @@ class CustomAppBar extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                       child: IconButton(
                           onPressed: () {
-                            Get.back();
+                            context.pop();
                           },
                           icon: const Icon(Icons.arrow_back_ios_new)),
                     )

@@ -1,4 +1,3 @@
-import 'package:code_challenge/base/router/app_routes.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +15,6 @@ extension ExceptionsManagment on DioException {
               break;
             case 'Token is not active':
               Get.snackbar('Attenzione', "Sessione scaduta effettuare il login!");
-              Get.offAllNamed(Routes.login);
               break;
             default:
               Get.snackbar('Attenzione', "Errore generico, contattare l'assistenza");
