@@ -43,10 +43,6 @@ class HomeViewModel extends ViewModel with StateMixin<dynamic> {
     update();
   }
 
-  void closeDrawer() {
-    scaffoldKey.currentState?.closeDrawer();
-  }
-
   Future<void> logout() async {
     try {
       await _secureStorage.delete(key: 'token');
@@ -72,5 +68,21 @@ class HomeViewModel extends ViewModel with StateMixin<dynamic> {
       animalSearched = response.result!.first;
     }
     update();
+  }
+
+  void openDrawer() {
+    scaffoldKey.currentState?.openDrawer();
+  }
+
+  void closeDrawer() {
+    scaffoldKey.currentState?.closeDrawer();
+  }
+
+  void openNotificationsDrawer() {
+    scaffoldKey.currentState?.openEndDrawer();
+  }
+
+  void closeNotificationsDrawer() {
+    scaffoldKey.currentState?.closeEndDrawer();
   }
 }

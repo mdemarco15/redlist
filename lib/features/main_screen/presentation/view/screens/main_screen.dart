@@ -14,7 +14,11 @@ class MainScreen extends Screen<MainScreenViewModel> {
       return ResponsiveBuilder(builder: (context, size) {
         return Scaffold(
           backgroundColor: AppColors.primary,
-          body: viewModel.pageList.elementAt(viewModel.selectedBottomBarIndex.value),
+          body: Row(
+            children: [
+              viewModel.pageList.elementAt(viewModel.selectedBottomBarIndex.value),
+            ],
+          ),
         );
       });
     }, onLoading: Container(color: AppColors.primary, child: const Center(child: CircularProgressIndicator())));

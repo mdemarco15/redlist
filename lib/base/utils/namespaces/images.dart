@@ -33,7 +33,7 @@ extension Images on Never {
     String? image,
     double? height,
     double? width,
-    BoxFit? fit,
+    BoxFit? fit = BoxFit.fill,
   }) {
     return Image.asset(
       image!,

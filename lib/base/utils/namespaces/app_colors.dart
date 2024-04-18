@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 extension AppColors on Never {
   //basic Colors
   static const Color primary = Color.fromARGB(255, 20, 20, 36);
-  static const Color secondary = Colors.blue;
+  static const secondary = Color.fromRGBO(1, 17, 41, 1);
 
   //Card Colors
   static const Color cardPrimary = Color.fromARGB(255, 49, 49, 49);
