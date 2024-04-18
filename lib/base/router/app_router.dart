@@ -1,4 +1,5 @@
 import 'package:code_challenge/base/router/app_routes.dart';
+import 'package:code_challenge/features/animal_detail/presentation/view/pages/animal_detail_page.dart';
 import 'package:code_challenge/features/auth/presentation/view/pages/auth_page.dart';
 import 'package:code_challenge/features/home/presentation/view/pages/home_page.dart';
 import 'package:code_challenge/features/splashscreen/presentation/pages/splash_page.dart';
@@ -10,6 +11,11 @@ abstract class AppRouter {
   static List<Page<dynamic>> get pages => _getPages();
 
   static List<Page<dynamic>> _getPages() {
-    return <Page<dynamic>>[SplashPage(), HomePage(), AuthPage()];
+    return <Page<dynamic>>[
+      SplashPage(),
+      HomePage(),
+      AuthPage(),
+      AnimalDetailPage(),
+    ];
   }
 }

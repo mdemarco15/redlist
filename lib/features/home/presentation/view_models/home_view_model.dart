@@ -70,6 +70,15 @@ class HomeViewModel extends ViewModel with StateMixin<dynamic> {
     update();
   }
 
+  void navigateToDetail(int? id) {
+    _sharedPreferences.setInt('id', animalSearched!.taxonid!);
+    _sharedPreferences.setString('name', animalSearched!.scientificName!);
+    Get.toNamed(Routes.animalDetail, arguments: {
+      'id': animalSearched?.taxonid,
+      'name': animalSearched?.scientificName,
+    });
+  }
+
   void openDrawer() {
     scaffoldKey.currentState?.openDrawer();
   }

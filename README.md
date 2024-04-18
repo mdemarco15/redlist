@@ -1,16 +1,12 @@
 # code_challenge
 
-A new Flutter project.
+RedList is an App for Android and Browser platform, that integrates the api https://apiv3.iucnredlist.org/api/v3/docs
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+- to compile the models run: flutter packages pub run build_runner build --delete-conflicting-outputs
+- dart: ">=3.3.0 <4.0.0"
+- flutter: ">=3.19.0"
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Contacts
+Michele De Marco email: micheledemarco@devworld.it
